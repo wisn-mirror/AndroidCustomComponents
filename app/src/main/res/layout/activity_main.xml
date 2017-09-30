@@ -6,7 +6,12 @@
     android:layout_height="match_parent">
 
    <com.wisn.components.view.PercentageProgressBar
-       android:layout_width="400dp"
-       android:layout_height="500dp"/>
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:paddingTop="10dp"
+       android:paddingBottom="10dp"
+       android:paddingLeft="160dp"
+       android:paddingRight="160dp"
+       />
 
 </LinearLayout>
