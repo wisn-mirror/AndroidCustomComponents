@@ -4,7 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -14,7 +16,7 @@ import android.view.View;
  * Created by wisn on 2017/9/27.
  */
 
-public class PercentageProgressBar extends View {
+public class PercentageProgressBar2 extends View {
     public static final String TAG = "PercentageProgressBar";
     private Paint mPaint = null;
     private Rect mRect;
@@ -75,23 +77,41 @@ public class PercentageProgressBar extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        mPaint.setColor(Color.GREEN);
+        mPaint.setColor(Color.GRAY);
         canvas.drawRect(0, 0, mWidthSize, mHeightSize, mPaint);
         mPaint.setColor(Color.BLUE);
-        canvas.drawText(Text, getPaddingLeft(), mRect.height()+getPaddingTop(), mPaint);
+        canvas.drawCircle(mWidthSize/4, mHeightSize/4, 20, mPaint);
+        mPaint.setColor(Color.RED);
+        canvas.drawLine(0,0, mWidthSize/2, mHeightSize/2, mPaint);
+        mPaint.setColor(Color.YELLOW);
+        RectF oval=new RectF(mWidthSize/2,mHeightSize/2,mWidthSize-50,mHeightSize-20);
+        //圆形，椭圆
+//        canvas.drawOval(oval,mPaint);
+        //矩形
+//        canvas.drawRect(oval,mPaint);
+        canvas.drawRoundRect(oval,20,20,mPaint);
+        Path path=new Path();
+        path.moveTo(0,0);
+        path.lineTo(50,mHeightSize);
+        path.lineTo(mWidthSize/2,mHeightSize-50);
+        path.lineTo(0,0);
+//        canvas.drawPath(path,mPaint);
+        canvas.drawTextOnPath("你好萌哒反对撒放到是非得失你好萌哒反对撒放到是非得失你好萌哒反对撒放到是非得失你好萌哒反对撒放到是非得失你好萌哒反对撒放到是非得失你好萌哒反对撒放到是非得失",
+                              path,10,10,mPaint);
+
     }
 
-    public PercentageProgressBar(Context context) {
+    public PercentageProgressBar2(Context context) {
         super(context);
     }
 
-    public PercentageProgressBar(Context context,
-                                 @Nullable AttributeSet attrs) {
+    public PercentageProgressBar2(Context context,
+                                  @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
 
-    public PercentageProgressBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public PercentageProgressBar2(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
     }
