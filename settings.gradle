@@ -1,1 +1,4 @@
 include ':app', ':components'
+
+include ':utils'
+project(':utils').projectDir = new File('utils/utils')
