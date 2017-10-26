@@ -1,16 +1,13 @@
 package com.wisn.components.view;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-
-import com.wisn.components.R;
 
 /**
  * Created by wisn on 2017/10/24.
@@ -43,8 +40,8 @@ public class WImageView extends View {
                      int defStyleAttr) {
         this.mContext = context;
         mPaint = new Paint();
+        mPaint.setAntiAlias(true);
     }
-
 
 
     @Override
@@ -60,5 +57,10 @@ public class WImageView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStrokeWidth(10);
+        mPaint.setColor(Color.BLACK);
+        canvas.drawCircle(110, 110, 100, mPaint);
+//        canvas.drawRect(10,10,10,10,mPaint);
     }
 }
